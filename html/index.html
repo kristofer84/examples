@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <style>
+      :root {
+        --circle-radius-from: 10px;
+        --circle-radius-to: 100px;
+        --circle-duration: 1.5s;
+      }
+      #wrapper {
+        position: absolute;
+        left: 700px;
+        top: 300px;
+      }
+
+      .circle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: var(--circle-radius-to);
+        width: var(--circle-radius-to);
+        background-color: aqua;
+        border-radius: 50%;
+        display: inline-block;
+        animation: expand var(--circle-duration) ease-out 0s infinite;
+      }
+
+      #c1 {
+        animation-delay: 0ms;
+      }
+
+      #c2 {
+        animation-delay: calc(var(--circle-duration) / 3);
+      }
+
+      #c3 {
+        animation-delay: calc(var(--circle-duration) * 2 / 3);
+      }
+
+      @keyframes expand {
+        0% {
+          width: var(--circle-radius-from);
+          height: var(--circle-radius-from);
+          margin: calc((var(--circle-radius-to) - var(--circle-radius-from)) / 2);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <span class="circle" id="c1"></span>
+      <span class="circle" id="c2"></span>
+      <span class="circle" id="c3"></span>
+    </div>
+  </body>
+</html>

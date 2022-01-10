@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script>
+      let startTime;
+      function startLog() {
+        this.startTime = performance.now();
+      }
+
+      function log(name) {
+        const now = performance.now();
+        if (this.startTime) {
+          console.log(`${name}: ${now - this.startTime} ms`);
+        }
+
+        this.startTime = now;
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const values = ["A", "AA", "AAA", "AAAA", "AAAAA", "AAAAAA", "AAAAAAA", "AAAAAAAA", "AAAAAAAAA", "AAAAAAAAAA", "AAAAAAAAAAA"];
+
+        const input = document.getElementById("in");
+        const list = document.getElementById("dl");
+        input.addEventListener("keyup", (e) => {
+          list.setAttribute("id", null);
+          const arr = [];
+          this.startLog();
+          values.forEach((v) => arr.push(new Option(v)));
+          list.replaceChildren(...arr);
+          list.setAttribute("id", "dl");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input id="in" list="dl" />
+    <datalist id="dl"> </datalist>
+  </body>
+</html>

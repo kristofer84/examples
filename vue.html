@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<div id="demo"></div>
+
+<script>
+  const res = Vue.compile('<div>\
+    <input type="radio" id="one" value="a" v-model="type">\
+    <input type="radio" id="two" value="b" v-model="type">\
+    <img :src="keysIcon" /></div>');
+
+  var demo = new Vue({
+    el: "#demo",
+    data: {
+      type: "a",
+      aIcon: "https://i.stack.imgur.com/gJmeJ.png",
+      bIcon: "https://i.stack.imgur.com/T5uTa.png",
+    },
+    render: res.render,
+    staticRenderFns: res.staticRenderFns,
+    computed: {
+      keysIcon() {
+        console.log(this.bIcon);
+        return (
+          new Map([
+            ["a", this.aIcon],
+            ["b", this.bIcon],
+          ]).get(this.type) || ""
+        );
+      },
+    },
+  });
+</script>

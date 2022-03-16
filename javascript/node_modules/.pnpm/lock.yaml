@@ -1,0 +1,21 @@
+lockfileVersion: 5.3
+
+specifiers:
+  memorystream: ^0.3.1
+  tar-async: ^1.2.0
+
+dependencies:
+  memorystream: 0.3.1
+  tar-async: 1.2.0
+
+packages:
+
+  /memorystream/0.3.1:
+    resolution: {integrity: sha1-htcJCzDORV1j+64S3aUaR93K+bI=}
+    engines: {node: '>= 0.10.0'}
+    dev: false
+
+  /tar-async/1.2.0:
+    resolution: {integrity: sha1-5w0XmCi3iCMLzPONp9bDsah92Dg=}
+    engines: {node: '>=0.1.90'}
+    dev: false

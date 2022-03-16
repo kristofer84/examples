@@ -1,0 +1,93 @@
+<html>
+<head>
+	<script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+	<style>
+		.style1 {
+			fill: #00a0f2;
+			fill-opacity: 0;
+			stroke-width: 2px;
+			stroke: #050092;
+		}
+
+		.style2 {
+			fill: #00f201;
+			fill-opacity: 0;
+			stroke-width: 2px;
+			stroke: #029200;
+		}
+		
+		#visualization {
+			width: 80vw;
+		}
+	</style>
+</head>
+<body>
+	<div id="visualization"></div>
+	
+	<script>
+	var groups = new vis.DataSet();
+	
+	groups.add({
+		id: 0,
+		className: "style1",
+		options: {
+			yAxisOrientation: "left", // right, left
+			drawPoints: {
+				style: "circle", // square, circle
+			},
+			shaded: {
+				orientation: "top", // top, bottom
+			},
+		},
+	});
+	
+	groups.add({
+		id: 1,
+		className: "style2",
+		options: {
+			yAxisOrientation: "right", // right, left
+			drawPoints: {
+				style: "square", // square, circle
+			}
+		},
+	});
+	
+	var items = [
+		{ x: "2019-12-01", y: 25608, group: 0 },{ x: "2020-01-01", y: 25018, group: 0 },{ x: "2020-02-01", y: 24839, group: 0 },{ x: "2020-03-01", y: 29984, group: 0 },{ x: "2020-04-01", y: 14130, group: 0 },{ x: "2020-05-01", y: 295  , group: 0 },{ x: "2020-06-01", y: 677  , group: 0 },{ x: "2020-07-01", y: 1863 , group: 0 },
+		{ x: "2020-08-01", y: 3841 , group: 0 },{ x: "2020-09-01", y: 3993 , group: 0 },{ x: "2020-10-01", y: 6217 , group: 0 },{ x: "2020-11-01", y: 6918 , group: 0 },{ x: "2020-12-01", y: 4382 , group: 0 },{ x: "2021-01-01", y: 2796 , group: 0 },{ x: "2021-02-01", y: 2924 , group: 0 },{ x: "2021-03-01", y: 2467 , group: 0 },
+		{ x: "2021-04-01", y: 2955 , group: 0 },{ x: "2021-05-01", y: 5064 , group: 0 },{ x: "2021-06-01", y: 5613 , group: 0 },{ x: "2021-07-01", y: 4124 , group: 0 },{ x: "2021-08-01", y: 5830 , group: 0 },{ x: "2021-09-01", y: 5885 , group: 0 },{ x: "2021-10-01", y: 9304 , group: 0 },{ x: "2021-11-01", y: 15794, group: 0 },
+		{ x: "2021-12-01", y: 18427, group: 0 },{ x: "2022-01-01", y: 19159, group: 0 },{ x: "2019-12-01", y: 2230, group: 1 },{ x: "2020-01-01", y: 2656, group: 1 },{ x: "2020-02-01", y: 2587, group: 1 },{ x: "2020-03-01", y: 2172, group: 1 },{ x: "2020-04-01", y: 957 , group: 1 },{ x: "2020-05-01", y: 409 , group: 1 },
+		{ x: "2020-06-01", y: 388 , group: 1 },{ x: "2020-07-01", y: 564 , group: 1 },{ x: "2020-08-01", y: 578 , group: 1 },{ x: "2020-09-01", y: 636 , group: 1 },{ x: "2020-10-01", y: 648 , group: 1 },{ x: "2020-11-01", y: 615 , group: 1 },{ x: "2020-12-01", y: 638 , group: 1 },{ x: "2021-01-01", y: 691, group: 1 },
+		{ x: "2021-02-01", y: 643 , group: 1 },{ x: "2021-03-01", y: 595 , group: 1 },{ x: "2021-04-01", y: 623 , group: 1 },{ x: "2021-05-01", y: 632 , group: 1 },{ x: "2021-06-01", y: 630 , group: 1 },{ x: "2021-07-01", y: 632 , group: 1 },{ x: "2021-08-01", y: 654 , group: 1 },{ x: "2021-09-01", y: 713 , group: 1 },
+		{ x: "2021-10-01", y: 830 , group: 1 },{ x: "2021-11-01", y: 1368, group: 1 },{ x: "2021-12-01", y: 1914, group: 1 },{ x: "2022-01-01", y: 2111, group: 1 }
+	];
+
+	var dataset = new vis.DataSet(items);
+
+	var options = {
+	  height:700,
+		drawPoints: true,
+		start: "2019-11-15",
+		end: "2022-04-15",
+		dataAxis: {
+			alignZeros: true,
+			left: {
+				range: {min:0, max:35000},
+				title: {
+					text: "aaaa"
+				}
+			},
+			right: {
+				range: {min:0, max:	3000},
+				title: {
+					text: "bbbb"
+				}
+			},
+		}
+	};
+	
+	var container = document.getElementById("visualization");
+	var graph2d = new vis.Graph2d(container, dataset, groups, options);
+	</script>
+</body>
+</html>
